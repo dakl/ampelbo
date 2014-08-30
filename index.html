@@ -11,7 +11,7 @@
       // onload callback
       function drawChart() {
 
-        var public_key = 'NJJ67Z6K8xCZJ9VKlAyv';
+        var public_key = 'LQQobq79V0HGGAZNGMVl';
 
         // JSONP request
         var jsonData = $.ajax({
@@ -23,13 +23,15 @@
           var data = new google.visualization.DataTable();
 
           data.addColumn('datetime', 'Time');
-          data.addColumn('number', 'Temp');
+          data.addColumn('number', 'Indoor Temp');
+          data.addColumn('number', 'Outdoor Temp');
           data.addColumn('number', 'Humidity');
 
           $.each(results, function (i, row) {
             data.addRow([
               (new Date(row.timestamp)),
-              parseFloat(row.temp),
+              parseFloat(row.indoortemp),
+              parseFloat(row.outdoortemp),
               parseFloat(row.humidity)
             ]);
           });
